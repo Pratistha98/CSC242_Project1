@@ -12,6 +12,8 @@ public class Tester {
         State test_state = new State(board,1);
         Actions test_actions = new Actions(test_state);
         System.out.println(test_actions.getActions());
+        State result_test = Game.get_result(test_state,test_actions.getActions().get(0));
+        printBoard(result_test.board);
     }
     public static void printBoard(int[][] board) {
         System.out.print(" ");
