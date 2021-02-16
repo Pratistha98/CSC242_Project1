@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Tester {
+    //Test to check if git is working
     public static void main(String[] args) {
 
         int[][] board = new int[4][4];
