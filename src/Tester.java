@@ -14,6 +14,7 @@ public class Tester {
         System.out.println(test_actions.getActions());
         State result_test = Game.get_result(test_state,test_actions.getActions().get(0));
         printBoard(result_test.board);
+        Game.play_reversi_mini_max();
     }
     public static void printBoard(int[][] board) {
         System.out.print(" ");

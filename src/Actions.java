@@ -24,8 +24,8 @@ public class Actions {
 
                     if (checkDirection(c, r, c-i, r-j)) {
                         //System.out.println("in second if");
-                        if (!this.actions.contains(Integer.toString(i) + Integer.toString(j))) {
-                            this.actions.add(Integer.toString(i) + Integer.toString(j));
+                        if (!this.actions.contains(Integer.toString(j) + Integer.toString(i))) {
+                            this.actions.add(Integer.toString(j) + Integer.toString(i));
                         }
                     }
                 }
