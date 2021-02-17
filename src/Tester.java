@@ -1,14 +1,13 @@
+import java.util.ArrayList;
+
 public class Tester {
-    //Test to check if git is working
     public static void main(String[] args) {
 
-        int size = 4; 
-        int[][] board = new int[size][size];
-        board[(size/2) - 1][(size/2) -1] = 1;
-        board[size/2][size/2] = 1;
-        board[(size/2) - 1][size/2] = -1;
-        board[size/2][(size/2) - 1] = -1;
-        System.out.println("I am here");
+        int[][] board = new int[4][4];
+        board[1][1] = 1;
+        board[2][2] = 1;
+        board[1][2] = -1;
+        board[2][1] = -1;
         printBoard(board);
         State test_state = new State(board,1);
         Actions test_actions = new Actions(test_state);
