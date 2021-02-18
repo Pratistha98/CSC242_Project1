@@ -4,7 +4,49 @@ public class Game {
 	Players human; 
 	Players computer;
 
+	// EDITED FOR MAIN
+	public void play_reversi_mini_max1(int size, int human_player){
+		int[][] board = new int[size][size];
+		board[(size/2) -1][(size/2) -1] = 1;
+		board[(size/2)][(size/2)] = 1;
+		board[(size/2) -1][(size/2)] = -1;
+		board[(size/2)][(size/2) -1] = -1;
 
+		Game game = new Game();
+		game.printBoard(board);
+		State init_state = new State(board,human_player);
+		Scanner scn = new Scanner(System.in);  // Create a Scanner object
+
+		Actions alist = new Actions(init_state);
+		while(alist.getActions().size() > 0){
+			printBoard(init_state.board);
+			//opposite player 
+			if(init_state.activePlayer == human_player * -1){
+				if (human_player == -1){
+					System.out.println("Dark's Turn");
+				}
+				else {
+					System.out.println("Light's Turn");
+				}
+			
+				System.out.print("Enter Row: ");
+				//String input = scn.nextLine();
+				int r = scn.nextInt();
+				//char c = (char)((int)input.charAt(0))-97;
+				System.out.print("Enter Column: ");
+				int c = scn.nextInt();
+				init_state = get_result(init_state,Integer.toString(r) + Integer.toString(c));
+			}else{
+				System.out.println("\n");
+				init_state = get_result(init_state,minimax(init_state));
+			}
+		}
+		System.out.println("player "+utility(init_state)+" wins");
+
+
+	}
+
+	//MAIN ONE
 	public static void play_reversi_mini_max(){
 		int[][] board = new int[4][4];
 		board[1][1] = 1;
