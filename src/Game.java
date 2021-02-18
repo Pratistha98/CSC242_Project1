@@ -16,7 +16,7 @@ public class Game {
 
 		Actions alist = new Actions(init_state);
 		while(alist.getActions().size() > 0){
-			Tester.printBoard(init_state.board);
+			printBoard(init_state.board);
 			if(init_state.activePlayer == -1){
 				System.out.print("enter column");
 				//String input = scn.nextLine();
@@ -79,6 +79,8 @@ public class Game {
 		String action = "";
 		int v = -2;
 		for(int i=0; i<alist.getActions().size();i++){
+			//System.out.println(alist.actions.get(i));
+			//printBoard(get_result(s,alist.actions.get(i)).board);
 			int holder = min_value(get_result(s,alist.actions.get(i)));
 			if(holder > v){
 				v = holder;
@@ -89,12 +91,17 @@ public class Game {
 	}
 
 	public static int max_value(State s){
-		Actions alist = new Actions(s);
-		if(alist.getActions().size() == 0){
-			return utility(s);
+		//System.out.println("+++++++++++++++++++++");
+		//printBoard(s.board);
+			Actions alist = new Actions(s);
+			if(alist.getActions().size() == 0){
+				return utility(s);
 		}
 		int v = -2;
+
 		for(int i=0; i<alist.getActions().size();i++){
+			//System.out.println(alist.actions+"action selected");
+			//printBoard(get_result(s,alist.actions.get(i)).board);
 			int holder = min_value(get_result(s,alist.actions.get(i)));
 			if(holder > v ){
 				v = holder;
@@ -104,12 +111,14 @@ public class Game {
 	}
 	public static int min_value(State s){
 		Actions alist = new Actions(s);
+		//System.out.println(alist.actions);
 		if(alist.getActions().size() == 0){
 			return utility(s);
 		}
 		int v = 2;
 		for(int i=0; i<alist.getActions().size();i++){
 			int holder = max_value(get_result(s,alist.actions.get(i)));
+
 			if(holder < v){
 				v = holder;
 			}
@@ -128,6 +137,28 @@ public class Game {
 			}
 		}
 		return Integer.compare(result, 0);
+	}
+
+	public static void printBoard(int[][] board) {
+		System.out.print(" ");
+		for (int i = 0; i < board.length; i++) {
+			System.out.print(" "+(char) ((char) i + 97));
+		}
+		System.out.println();
+		for (int i = 0; i < board.length; i++) {
+			System.out.print(i+" ");
+			for (int j = 0; j < board.length; j++) {
+				if(board[i][j] == 1){
+					System.out.print("x ");
+				}else if(board[i][j] == -1){
+					System.out.print("o ");
+				}else{
+					System.out.print("  ");
+
+				}
+			}
+			System.out.println();
+		}
 	}
 
 
