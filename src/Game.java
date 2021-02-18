@@ -1,9 +1,37 @@
 import java.util.Scanner;
+import java.util.Scanner;
+
 public class Game {
 
-	Players human; 
-	Players computer;
 
+	public void Play_game(Player p1, Player p2, State init_state) {
+		String action;
+		Actions alist = new Actions(init_state);
+		State s = init_state;
+		printBoard(s.getBoard());
+		System.out.println("Dark's Turn");
+		while (alist.getActions().size() > 0) {
+			if (s.activePlayer == -1) {
+				action = p1.get_action(s);
+			} else {
+				action = p2.get_action(s);
+			}
+			if (alist.getActions().contains(action)){
+				System.out.println("Move Selected: "+action);
+				s = get_result(s,action);
+				printBoard(s.getBoard());
+				alist = new Actions(s);
+				if(s.activePlayer == -1){
+					System.out.println("Dark's Turn");
+				}else{
+					System.out.println("Light's Turn");
+				}
+			}else{
+				System.out.println(action+" is not a valid move");
+			}
+		}
+		System.out.println("Game Over: player "+utility(s)+" wins");
+	}
 	// EDITED FOR MAIN
 	public void play_reversi_mini_max1(int size, int human_player){
 		int[][] board = new int[size][size];
@@ -13,11 +41,10 @@ public class Game {
 		board[(size/2)][(size/2) -1] = -1;
 
 		Game game = new Game();
-		game.printBoard(board);
+		printBoard(board);
 		State init_state = new State(board,human_player);
-		Scanner scn = new Scanner(System.in);  // Create a Scanner object
-
 		Actions alist = new Actions(init_state);
+		Scanner scn = new Scanner(System.in);  // Create a Scanner object
 		while(alist.getActions().size() > 0){
 			printBoard(init_state.board);
 			//opposite player 
@@ -28,7 +55,6 @@ public class Game {
 				else {
 					System.out.println("Light's Turn");
 				}
-			
 				System.out.print("Enter Row: ");
 				//String input = scn.nextLine();
 				int r = scn.nextInt();
@@ -38,7 +64,7 @@ public class Game {
 				init_state = get_result(init_state,Integer.toString(r) + Integer.toString(c));
 			}else{
 				System.out.println("\n");
-				init_state = get_result(init_state,minimax(init_state));
+				init_state = get_result(init_state,Minimax.minimax(init_state));
 			}
 		}
 		System.out.println("player "+utility(init_state)+" wins");
@@ -69,7 +95,7 @@ public class Game {
 				int r = scn.nextInt();
 				init_state = get_result(init_state,Integer.toString(r) + Integer.toString(c));
 			}else{
-				init_state = get_result(init_state,minimax(init_state));
+				init_state = get_result(init_state,Minimax.minimax(init_state));
 			}
 		}
 		System.out.println("player "+utility(init_state)+"wins");
@@ -113,73 +139,7 @@ public class Game {
 		}
 		return false;
 	}
-	public static String minimax(State s){
-		Actions alist = new Actions(s);
-		if(alist.getActions().size() == 0){
-			return "";
-		}
-		String action = "";
-		int v = -2;
-		for(int i=0; i<alist.getActions().size();i++){
-			//System.out.println(alist.actions.get(i));
-			//printBoard(get_result(s,alist.actions.get(i)).board);
-			int holder = min_value(get_result(s,alist.actions.get(i)));
-			if(holder > v){
-				v = holder;
-				action = alist.getActions().get(i);
-			}
-		}
-		return action;
-	}
 
-	public static int max_value(State s){
-		//System.out.println("+++++++++++++++++++++");
-		//printBoard(s.board);
-			Actions alist = new Actions(s);
-			if(alist.getActions().size() == 0){
-				return utility(s);
-		}
-		int v = -2;
-
-		for(int i=0; i<alist.getActions().size();i++){
-			//System.out.println(alist.actions+"action selected");
-			//printBoard(get_result(s,alist.actions.get(i)).board);
-			int holder = min_value(get_result(s,alist.actions.get(i)));
-			if(holder > v ){
-				v = holder;
-			}
-		}
-		return v;
-	}
-	public static int min_value(State s){
-		Actions alist = new Actions(s);
-		//System.out.println(alist.actions);
-		if(alist.getActions().size() == 0){
-			return utility(s);
-		}
-		int v = 2;
-		for(int i=0; i<alist.getActions().size();i++){
-			int holder = max_value(get_result(s,alist.actions.get(i)));
-
-			if(holder < v){
-				v = holder;
-			}
-		}
-		return v;
-	}
-
-
-
-
-	public static int utility(State s){
-		int result = 0;
-		for(int i =0; i<s.board.length; i++) {
-			for (int j = 0; j < s.board.length; j++) {
-				result += s.board[i][j];
-			}
-		}
-		return Integer.compare(result, 0);
-	}
 
 	public static void printBoard(int[][] board) {
 		System.out.print(" ");
@@ -204,5 +164,14 @@ public class Game {
 	}
 
 
+	public static int utility(State s){
+		int result = 0;
+		for(int i =0; i<s.board.length; i++) {
+			for (int j = 0; j < s.board.length; j++) {
+				result += s.board[i][j];
+			}
+		}
+		return Integer.compare(result, 0);
+	}
 }
 
