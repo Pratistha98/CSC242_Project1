@@ -1,8 +1,15 @@
 import java.util.Scanner;
-import java.util.Scanner;
 
 public class Game {
 
+	public State generate_init_state(int size){
+		int[][] board = new int[size][size];
+		board[(size/2) -1][(size/2) -1] = 1;
+		board[(size/2)][(size/2)] = 1;
+		board[(size/2) -1][(size/2)] = -1;
+		board[(size/2)][(size/2) -1] = -1;
+		return new State(board,-1);
+	}
 
 	public void Play_game(Player p1, Player p2, State init_state) {
 		String action;
@@ -164,14 +171,14 @@ public class Game {
 	}
 
 
-	public static int utility(State s){
-		int result = 0;
+	public static double utility(State s){
+		double result = 0;
 		for(int i =0; i<s.board.length; i++) {
 			for (int j = 0; j < s.board.length; j++) {
 				result += s.board[i][j];
 			}
 		}
-		return Integer.compare(result, 0);
+		return result;
 	}
 }
 
