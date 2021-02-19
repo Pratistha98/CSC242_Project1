@@ -33,7 +33,7 @@ public static void main (String[] args){
 			System.exit(0);
 		}
 		else{
-			System.out.print ("Invalid choice Enter your choice or press '0' to quit: ");
+			System.out.println("Invalid choice Enter your choice or press '0' to quit: ");
 		}
 	}
 

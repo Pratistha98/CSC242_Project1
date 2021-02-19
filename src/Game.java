@@ -20,8 +20,10 @@ public class Game {
 		while (alist.getActions().size() > 0) {
 			if (s.activePlayer == -1) {
 				action = p1.get_action(s);
+				System.out.println(action); // DEBUG
 			} else {
 				action = p2.get_action(s);
+				System.out.println(action); // DEBUG
 			}
 			if (alist.getActions().contains(action)){
 				System.out.println("Move Selected: "+action);
