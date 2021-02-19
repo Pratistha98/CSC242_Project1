@@ -158,9 +158,9 @@ public class Game {
 			System.out.print(i+" ");
 			for (int j = 0; j < board.length; j++) {
 				if(board[i][j] == 1){
-					System.out.print("x ");
-				}else if(board[i][j] == -1){
 					System.out.print("o ");
+				}else if(board[i][j] == -1){
+					System.out.print("x ");
 				}else{
 					System.out.print("  ");
 
