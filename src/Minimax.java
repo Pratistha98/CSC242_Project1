@@ -8,12 +8,13 @@ public class Minimax implements Player {
 
     public static String minimax(State s){
         Actions alist = new Actions(s);
-        if(alist.getActions().size() == 0){
-            System.out.println("This is some wack shit");
+        if(alist.getActions().size() == 0){ //terminal state checker
+            // TODO: should also account for 2nd player's available actions
+            System.out.println("This is some wack shoot");
             return "";
         }
         String action = "";
-        double v = Double.NEGATIVE_INFINITY;
+        double v = Double.NEGATIVE_INFINITY; //refers to utility value
         for(int i=0; i<alist.getActions().size();i++){
             //System.out.println(alist.actions.get(i));
             //printBoard(get_result(s,alist.actions.get(i)).board);
