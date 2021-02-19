@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public class Human implements Player{
+    public Human() {
+    }
+
     public String get_action(State s) {
         Scanner scn = new Scanner(System.in);  // Create a Scanner object
         System.out.print("Enter Row: ");

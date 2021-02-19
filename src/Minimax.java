@@ -1,4 +1,6 @@
 public class Minimax implements Player {
+    public Minimax() {
+    }
 
     public String get_action(State s) {
         return minimax(s);

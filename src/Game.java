@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Game {
 
-	public State generate_init_state(int size){
+	public static State generate_init_state(int size){
 		int[][] board = new int[size][size];
 		board[(size/2) -1][(size/2) -1] = 1;
 		board[(size/2)][(size/2)] = 1;
@@ -11,7 +11,7 @@ public class Game {
 		return new State(board,-1);
 	}
 
-	public void Play_game(Player p1, Player p2, State init_state) {
+	public static void play_game(Player p1, Player p2, State init_state) {
 		String action;
 		Actions alist = new Actions(init_state);
 		State s = init_state;

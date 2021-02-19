@@ -16,7 +16,12 @@ public class Tester {
         System.out.println(test_actions.getActions());
         State result_test = Game.get_result(test_state,test_actions.getActions().get(1));
         Game.printBoard(result_test.board);*/
-        Game.play_reversi_mini_max();
+        //Game.play_reversi_mini_max();
+        State init_s = Game.generate_init_state(4);
+        Player human = new Human();
+        Player mini = new Minimax();
+        Game.play_game(human,mini,init_s);
+
     }
 
 }
