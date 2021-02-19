@@ -9,10 +9,11 @@ public class Minimax implements Player {
     public static String minimax(State s){
         Actions alist = new Actions(s);
         if(alist.getActions().size() == 0){
+            System.out.println("This is some wack shit");
             return "";
         }
         String action = "";
-        double v = Double.POSITIVE_INFINITY;
+        double v = Double.NEGATIVE_INFINITY;
         for(int i=0; i<alist.getActions().size();i++){
             //System.out.println(alist.actions.get(i));
             //printBoard(get_result(s,alist.actions.get(i)).board);
