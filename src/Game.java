@@ -34,7 +34,7 @@ public class Game {
 					System.out.println("Light's Turn");
 				}
 			}else{
-				System.out.println(action+" is not a valid move");
+				System.out.println("Chosen action: "+action+" is not a valid move");
 			}
 		}
 		System.out.println("Game Over: player "+utility(s)+" wins");
