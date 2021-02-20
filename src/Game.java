@@ -182,5 +182,9 @@ public class Game {
 		}
 		return result;
 	}
+	public static boolean terminal_test(State s){
+
+		return false;
+	}
 }
 
