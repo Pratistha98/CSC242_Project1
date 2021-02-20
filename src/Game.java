@@ -11,7 +11,7 @@ public class Game {
 		return new State(board,-1);
 	}
 
-	public static void play_game(Player p1, Player p2, State init_state) {
+	public static boolean play_game(Player p1, Player p2, State init_state, boolean quitState) {  // TESTER
 		String action;
 		Actions alist = new Actions(init_state);
 		State s = init_state;
@@ -39,7 +39,10 @@ public class Game {
 				System.out.println("Chosen action: "+action+" is not a valid move");
 			}
 		}
-		System.out.println("Game Over: player "+utility(s)+" wins");
+		System.out.println("Game Over: player "+utility(s)+" wins"); //Utility
+		quitState = false;  // TESTER
+		return quitState;  // TESTER
+		
 	}
 	// EDITED FOR MAIN
 	public void play_reversi_mini_max1(int size, int human_player){
