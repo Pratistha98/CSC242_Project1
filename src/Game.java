@@ -183,8 +183,11 @@ public class Game {
 		return result;
 	}
 	public static boolean terminal_test(State s){
-
-		return false;
+		boolean active_no_moves = new Actions(s).getActions().size() == 0;
+		s.activePlayer *=-1;
+		boolean next_no_moves = new Actions(s).getActions().size() == 0;
+		s.activePlayer *=-1;
+		return active_no_moves || next_no_moves;
 	}
 }
 
