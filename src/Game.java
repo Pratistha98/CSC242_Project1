@@ -39,7 +39,12 @@ public class Game {
 				System.out.println("Chosen action: "+action+" is not a valid move");
 			}
 		}
-		System.out.println("Game Over: player "+utility(s)+" wins"); //Utility
+		if (utility(init_state) > 0){
+			System.out.println("Dark " + utility(s) + "wins");
+		}
+		else{
+			System.out.println("Light " + utility(s) +" wins");
+		} //Utility
 		quitState = false;  // TESTER
 		return quitState;  // TESTER
 		
