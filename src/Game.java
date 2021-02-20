@@ -17,7 +17,7 @@ public class Game {
 		State s = init_state;
 		printBoard(s.getBoard());
 		System.out.println("Dark's Turn");
-		while (alist.getActions().size() > 0) {
+		while (!terminal_test(s)) {
 			if (s.activePlayer == -1) {
 				action = p1.get_action(s);
 				System.out.println(action); // DEBUG
@@ -45,7 +45,7 @@ public class Game {
 		
 	}
 	// EDITED FOR MAIN
-	public void play_reversi_mini_max1(int size, int human_player){
+	/*public void play_reversi_mini_max1(int size, int human_player){
 		int[][] board = new int[size][size];
 		board[(size/2) -1][(size/2) -1] = 1;
 		board[(size/2)][(size/2)] = 1;
@@ -82,10 +82,10 @@ public class Game {
 		System.out.println("player "+utility(init_state)+" wins");
 
 
-	}
+	}*/
 
 	//MAIN ONE
-	public static void play_reversi_mini_max(){
+	/*public static void play_reversi_mini_max(){
 		int[][] board = new int[4][4];
 		board[1][1] = 1;
 		board[2][2] = 1;
@@ -113,7 +113,7 @@ public class Game {
 		System.out.println("player "+utility(init_state)+"wins");
 
 
-	}
+	}*/
 
 	public static State get_result(State s, String a) {
 		State new_state = new State(s.getBoard(),s.getActivePlayer());
