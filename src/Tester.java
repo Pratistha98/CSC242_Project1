@@ -20,7 +20,7 @@ public class Tester {
         State init_s = Game.generate_init_state(4);
         Player human = new Human();
         Player mini = new Minimax();
-        Game.play_game(human,mini,init_s);
+      //  Game.play_game(human,mini,init_s);
 
     }
 

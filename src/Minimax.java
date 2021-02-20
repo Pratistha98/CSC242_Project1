@@ -8,9 +8,9 @@ public class Minimax implements Player {
 
     public static String minimax(State s){
         Actions alist = new Actions(s);
-        if(alist.getActions().size() == 0){ //terminal state checker
+        if(Game.terminal_test(s)){ //terminal state checker
             // TODO: should also account for 2nd player's available actions
-            System.out.println("This is some wack shoot");
+            //System.out.println("This is some wack shoot");
             return "";
         }
         String action = "";
@@ -30,9 +30,13 @@ public class Minimax implements Player {
     public static double max_value(State s){
         //System.out.println("+++++++++++++++++++++");
         //printBoard(s.board);
+        if(Game.terminal_test(s)){
+            return Game.utility(s);
+        }
         Actions alist = new Actions(s);
         if(alist.getActions().size() == 0){
-            return Game.utility(s);
+            s.activePlayer *=-1;
+            return min_value(s);
         }
         double v = Double.NEGATIVE_INFINITY;
 
@@ -47,10 +51,13 @@ public class Minimax implements Player {
         return v;
     }
     public static double min_value(State s){
-        Actions alist = new Actions(s);
-        //System.out.println(alist.actions);
-        if(alist.getActions().size() == 0){
+        if(Game.terminal_test(s)){
             return Game.utility(s);
+        }
+        Actions alist = new Actions(s);
+        if(alist.getActions().size() == 0){
+            s.activePlayer *=-1;
+            return max_value(s);
         }
         double v = Double.POSITIVE_INFINITY;
         for(int i=0; i<alist.getActions().size();i++){
