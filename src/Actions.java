@@ -16,12 +16,10 @@ public class Actions {
 
     }
     private void addAdjacentActions(int r,int c) {
-        System.out.println(r);
-        System.out.println(r);
-
         for (int i = Math.max(r - 1, 0); i < Math.min(r + 2, this.state.getBoard().length); i++) {
             for (int j = Math.max(c - 1, 0); j < Math.min(c + 2, this.state.getBoard().length); j++) {
                 if (this.state.getBoard()[i][j] == 0) {
+                    System.out.println("i "+i+" j "+r);
 
                     if (checkDirection(r, c, r-i, c-j)) {
                         //System.out.println("in second if");
@@ -35,6 +33,8 @@ public class Actions {
     }
 
     private boolean checkDirection(int r,int c, int x, int y) {
+        System.out.println("r "+r+" c "+c);
+
         /*System.out.println("== check direction ==");
         System.out.print(" c "+c);
         System.out.print(" r "+r);
