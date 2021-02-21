@@ -17,10 +17,6 @@ public class Tester {
         board[3][0] = -1;
         board[3][1] = -1;
 
-
-
-
-
         Game.printBoard(board);
         State test_state = new State(board,1);
         Actions test_actions = new Actions(test_state);
