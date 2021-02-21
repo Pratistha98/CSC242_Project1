@@ -127,7 +127,15 @@ public static void main (String[] args){
 			
 			   }
 			   else if (agent == 3){
-				System.out.println("I am Alpha Beta Pruning");
+				   State init_s = Game.generate_init_state(size);
+				   Player human = new Human();
+				   Player ab = new AlphaBeta();
+				   if (active_player.equals("H")){
+					   quitState = Game.play_game(human,ab,init_s, quitState); // TESTER
+				   }
+				   else{
+					   quitState = Game.play_game(ab,human,init_s, quitState); // TESTER
+				   }
 			   }
 			   else if  (agent == 4){
 				System.out.println("I am H-MiniMax with depth cut off and Alpha Beta Pruning");
