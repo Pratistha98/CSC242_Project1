@@ -19,11 +19,16 @@ public class Actions {
         for (int i = Math.max(r - 1, 0); i < Math.min(r + 2, this.state.getBoard().length); i++) {
             for (int j = Math.max(c - 1, 0); j < Math.min(c + 2, this.state.getBoard().length); j++) {
                 if (this.state.getBoard()[i][j] == 0) {
-                    System.out.println("i "+i+" j "+r);
+                    //System.out.println("inside!!! i "+i+" j "+j+" r "+r+" c "+c+ " x "+(r-i)+" y "+(c-j));
 
-                    if (checkDirection(r, c, r-i, c-j)) {
+                    //System.out.println("i "+i+" j "+j+" player:"+this.state.getActivePlayer());
+
+                    if (checkDirection(r, c, i-r, j-c)) {
+
                         //System.out.println("in second if");
                         if (!this.actions.contains(Integer.toString(i) + Integer.toString(j))) {
+                            //System.out.println("inside inside!!! i "+i+" j "+j+" player:"+this.state.getActivePlayer());
+
                             this.actions.add(Integer.toString(i) + Integer.toString(j));
                         }
                     }
@@ -33,7 +38,7 @@ public class Actions {
     }
 
     private boolean checkDirection(int r,int c, int x, int y) {
-        System.out.println("r "+r+" c "+c);
+        //System.out.println("r "+r+" c "+c);
 
         /*System.out.println("== check direction ==");
         System.out.print(" c "+c);
@@ -41,16 +46,16 @@ public class Actions {
         System.out.print(" x "+x);
         System.out.println(" y "+y);*/
 
-        if (c + y >= this.state.getBoard().length || r + x >= this.state.getBoard().length || c + y < 0 || r + x < 0) {
+        if (c + x >= this.state.getBoard().length || r + y >= this.state.getBoard().length || c + x < 0 || r + y < 0) {
             return false;
         }
-        if (this.state.getBoard()[x + r][y + c] == 0) {
+        if (this.state.getBoard()[r + y][c + x] == 0) {
             return false;
         }
-        if (this.state.getBoard()[x + r][y + c] == this.state.getActivePlayer()) {
+        if (this.state.getBoard()[r + y][c + x] == this.state.getActivePlayer()) {
             return true;
         }
-        return checkDirection(c + x, r + y, x, y);
+        return checkDirection(r + y, c + x, x, y);
     }
     public ArrayList<String> getActions(){
         return actions;
