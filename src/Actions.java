@@ -16,12 +16,6 @@ public class Actions {
 
     }
     private void addAdjacentActions(int r,int c) {
-<<<<<<< HEAD
-       // System.out.println(r);
-        //System.out.println(r);
-
-=======
->>>>>>> 71844adb70a393e2d315efdc62db7f4fdec0ef3e
         for (int i = Math.max(r - 1, 0); i < Math.min(r + 2, this.state.getBoard().length); i++) {
             for (int j = Math.max(c - 1, 0); j < Math.min(c + 2, this.state.getBoard().length); j++) {
                 if (this.state.getBoard()[i][j] == 0) {
