@@ -19,11 +19,11 @@ public class Actions {
         for (int i = Math.max(r - 1, 0); i < Math.min(r + 2, this.state.getBoard().length); i++) {
             for (int j = Math.max(c - 1, 0); j < Math.min(c + 2, this.state.getBoard().length); j++) {
                 if (this.state.getBoard()[i][j] == 0) {
-                    //System.out.println("inside!!! i "+i+" j "+j+" r "+r+" c "+c+ " x "+(r-i)+" y "+(c-j));
+                    //System.out.println("inside!!! i = "+i+" j = "+j+" r = "+r+" c = "+c+ " x = "+(c-j)+" y = "+(r-i));
 
                     //System.out.println("i "+i+" j "+j+" player:"+this.state.getActivePlayer());
 
-                    if (checkDirection(r, c, i-r, j-c)) {
+                    if (checkDirection(r, c, c-j, r-i)) {
 
                         //System.out.println("in second if");
                         if (!this.actions.contains(Integer.toString(i) + Integer.toString(j))) {
