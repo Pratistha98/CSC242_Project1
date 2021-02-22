@@ -13,7 +13,7 @@ public class Game {
 
 	public static boolean play_game(Player p1, Player p2, State init_state, boolean quitState) {  // TESTER
 		String action;
-		Actions alist = new Actions(init_state);
+		Actions alist = new Actions(init_state); //here
 		State s = init_state;
 		printBoard(s.getBoard());
 		System.out.println("Dark's Turn");

@@ -1,10 +1,15 @@
 import java.util.ArrayList;
 public class Actions {
+
+    // See if we can implement any move orderings here; this may better improve our Actions
+
     ArrayList<String> actions;
     State state;
     public Actions(State state){
         this.state = state;
         this.actions = new ArrayList<>();
+
+        // Tony: any way to optimize this action process? it seems horribly inefficient
         for(int r=0;r<state.getBoard().length;r++){
             for(int c=0;c<state.getBoard().length;c++){
                 if(state.getBoard()[r][c]*state.getActivePlayer()<0){
@@ -16,16 +21,12 @@ public class Actions {
 
     }
     private void addAdjacentActions(int r,int c) {
-<<<<<<< HEAD
-       // System.out.println(r);
-        //System.out.println(r);
 
-=======
->>>>>>> 71844adb70a393e2d315efdc62db7f4fdec0ef3e
+        // Tony: ESPECIALLY HERE
         for (int i = Math.max(r - 1, 0); i < Math.min(r + 2, this.state.getBoard().length); i++) {
             for (int j = Math.max(c - 1, 0); j < Math.min(c + 2, this.state.getBoard().length); j++) {
                 if (this.state.getBoard()[i][j] == 0) {
-                    System.out.println("i "+i+" j "+r);
+                    // System.out.println("i "+i+" j "+r);
 
                     if (checkDirection(r, c, r-i, c-j)) {
                         //System.out.println("in second if");
@@ -39,7 +40,7 @@ public class Actions {
     }
 
     private boolean checkDirection(int r,int c, int x, int y) {
-        System.out.println("r "+r+" c "+c);
+        // System.out.println("r "+r+" c "+c);
 
         /*System.out.println("== check direction ==");
         System.out.print(" c "+c);
