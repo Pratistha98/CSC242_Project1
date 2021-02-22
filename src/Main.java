@@ -26,14 +26,8 @@ public static void main (String[] args){
 		else if (board_size == 3){
 		ActivePlayer(8);
 		}
-		else if  (board_size == 3){
-			//pass
-		} 
 		else if (board_size == 0){
 			System.exit(0);
-		}
-		else if (board_size == 0){
-			//pass
 		}
 		else{
 			System.out.println("Invalid choice Enter your choice or press '0' to quit: ");
