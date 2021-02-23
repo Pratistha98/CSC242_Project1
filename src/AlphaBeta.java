@@ -60,7 +60,9 @@ public class AlphaBeta implements Player {
             s.activePlayer *=-1;
             return max_value(s,a,b);
         }
+        
         double v = Double.POSITIVE_INFINITY;
+
         for(int i=0; i<alist.getActions().size();i++){
             v  = Math.min(v,max_value(Game.get_result(s,alist.actions.get(i)),a,b));
 

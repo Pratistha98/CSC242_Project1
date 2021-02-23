@@ -1,10 +1,15 @@
 import java.util.ArrayList;
 public class Actions {
+
+    // See if we can implement any move orderings here; this may better improve our Actions
+
     ArrayList<String> actions;
     State state;
     public Actions(State state){
         this.state = state;
         this.actions = new ArrayList<>();
+
+        // Tony: any way to optimize this action process? it seems horribly inefficient
         for(int r=0;r<state.getBoard().length;r++){
             for(int c=0;c<state.getBoard().length;c++){
                 if(state.getBoard()[r][c]*state.getActivePlayer()<0){

@@ -5,17 +5,17 @@ public class Main {
 
 public static void main (String[] args){
 	board_size();
-	}
+}
 
-	public static void board_size (){
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Reversi by Forrest Pratistha and Tony \n");
-		System.out.println("Choose your game: \n"  + "1. Small 4x4 Reversi \n"
-		+ "2. Medium 6x6 Reversi \n" + "3. Standard 8x8 Reversi \n");
-		int size;
+public static void board_size (){
+	Scanner scan = new Scanner(System.in);
+	System.out.println("Reversi by Forrest Pratistha and Tony \n");
+	System.out.println("Choose your game: \n"  + "1. Small 4x4 Reversi \n"
+	+ "2. Medium 6x6 Reversi \n" + "3. Standard 8x8 Reversi \n");
+	int size;
 
-		System.out.print ("Enter your choice or press 0 to quit: ");
-		int board_size = scan.nextInt();
+	System.out.print ("Enter your choice or press 0 to quit: ");
+	int board_size = scan.nextInt();
 
 		if (board_size == 1){
 		ActivePlayer(4);
@@ -32,7 +32,7 @@ public static void main (String[] args){
 		else{
 			System.out.println("Invalid choice Enter your choice or press '0' to quit: ");
 		}
-		
+	}		
 
 		// ORIGINAL BELOW
 		// public static void board_size (){
@@ -67,7 +67,7 @@ public static void main (String[] args){
 		// 			System.out.println("Invalid choice Enter your choice or press '0' to quit: ");
 		// 		}
 		// 	}
-	}
+
 	public static void ActivePlayer (int size){
 		Scanner scan = new Scanner(System.in);
 		System.out.println("\nDo you want to play Dark (x) or Light(y)");
@@ -81,7 +81,7 @@ public static void main (String[] args){
 			   }
 			   else if (player.toUpperCase().equals("DARK")){
 				active_player = "H";
-				Agent(size, active_player);
+				Agent(size, active_player); // error here
 			   }
 			   else if (player.equals("0")){
 				System.exit(0);
@@ -113,7 +113,7 @@ public static void main (String[] args){
 				Player human = new Human();
 				Player mini = new Minimax();
 				if (active_player.equals("H")){
-					quitState = Game.play_game(human,mini,init_s, quitState); // TESTER
+					quitState = Game.play_game(human,mini,init_s, quitState); // TESTER //here
 				}
 				else{
 					quitState = Game.play_game(mini,human,init_s, quitState); // TESTER
