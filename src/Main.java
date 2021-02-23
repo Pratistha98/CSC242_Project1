@@ -132,7 +132,15 @@ public static void board_size (){
 				   }
 			   }
 			   else if  (agent == 4){
-				System.out.println("I am H-MiniMax with depth cut off and Alpha Beta Pruning");
+				   State init_s = Game.generate_init_state(size);
+				   Player human = new Human();
+				   Player abh = new HeuristicAB();
+				   if (active_player.equals("H")){
+					   quitState = Game.play_game(human,abh,init_s, quitState); // TESTER
+				   }
+				   else{
+					   quitState = Game.play_game(abh,human,init_s, quitState); // TESTER
+				   }
 				} 
 				else if (agent == 0){
 					System.exit(0);
