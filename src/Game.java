@@ -140,8 +140,14 @@ public class Game {
 		for (int i = Math.max(c - 1, 0); i < Math.min(c + 2, s.getBoard().length); i++) {
 			for (int j = Math.max(r - 1, 0); j < Math.min(r + 2, s.getBoard().length); j++) {
 				if (s.getBoard()[i][j]*s.getActivePlayer() < 0) { // TODO: we're doing matrix multiplication?
+				// TODO: Explain interactions of board above? It's not like board values are 
+				// initialized to 0, or -inf, so this flags for actually 3 conditions. one is where
+				// white player interacts with dark piece (-1), and dark player interacts with white piece (1).
+				// OH nvm I get it... I think. This should ONLY flag when player interacts with piece they're
+				// not supposed to. Just double check then, that WPlayer is 1 and DPlayer is -1 then!!
+
 					// TODO: This returns a bool... but it isn't stored anywhere. is this intentional?
-					updateDirection(c, r, i - c, j - r,new_state); 
+					updateDirection(c, r, i - c, j - r,new_state); //wtf lmao
 				}
 			}
 		}
