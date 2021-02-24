@@ -18,25 +18,35 @@ public class Game {
 		printBoard(s.getBoard());
 		System.out.println("Dark's Turn");
 		while (!terminal_test(s)) {
-			if (s.activePlayer == -1) {
-				action = p1.get_action(s);
-				System.out.println(action); // DEBUG
-			} else {
-				action = p2.get_action(s);
-				System.out.println(action); // DEBUG
-			}
-			if (alist.getActions().contains(action)){
-				System.out.println("Move Selected: "+action);
-				s = get_result(s,action);
-				printBoard(s.getBoard());
-				alist = new Actions(s);
+			if(alist.getActions().size() == 0){
+				System.out.println("NO MOVES ");
+				s.activePlayer *=-1;
 				if(s.activePlayer == -1){
 					System.out.println("Dark's Turn");
 				}else{
 					System.out.println("Light's Turn");
 				}
-			}else{
-				System.out.println("Chosen action: "+action+" is not a valid move");
+			}else {
+				if (s.activePlayer == -1) {
+					action = p1.get_action(s);
+					System.out.println(action); // DEBUG
+				} else {
+					action = p2.get_action(s);
+					System.out.println(action); // DEBUG
+				}
+				if (alist.getActions().contains(action)) {
+					System.out.println("Move Selected: " + action);
+					s = get_result(s, action);
+					printBoard(s.getBoard());
+					alist = new Actions(s);
+					if (s.activePlayer == -1) {
+						System.out.println("Dark's Turn");
+					} else {
+						System.out.println("Light's Turn");
+					}
+				} else {
+					System.out.println("Chosen action: " + action + " is not a valid move");
+				}
 			}
 		}
 		if (utility(init_state) > 0){
@@ -176,8 +186,15 @@ public class Game {
 
 				}
 			}
+			System.out.print(" "+i);
 			System.out.println();
 		}
+		System.out.print(" ");
+		for (int i = 0; i < board.length; i++) {
+			System.out.print(" "+(char) ((char) i + 97));
+		}
+		System.out.println();
+
 	}
 
 

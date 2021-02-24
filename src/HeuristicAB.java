@@ -81,7 +81,22 @@ public class HeuristicAB implements Player {
         return v;
     }
     private double heuristic(State s){
-        return Game.utility(s);
+        double result = 0;
+        int l = s.board.length;
+        for(int i =0; i<l; i++) {
+            for (int j = 0; j < l; j++) {
+                result += s.board[i][j];
+            }
+        }
+        result += s.board[0][0] * l;
+        result += s.board[l-1][0] * l;
+        result += s.board[0][l-1] * l;
+        result += s.board[l-1][l-1] * l;
+
+
+
+
+        return (1 / (1 + Math.exp(-result)))-.5;
     }
 
 
