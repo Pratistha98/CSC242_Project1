@@ -157,8 +157,8 @@ public class Game {
 					// TODO: This DEFINITELY influences board state, but I'm curious as to what happens because
 					// it also returns a true/false bool value... Could we just not utilize a seperate function?
 					// updateDirection is literally only called here...
-					updateDirection(c, r, i - c, j - r,new_state); //TEST
-					// nope, this definitely does something. not even sure how though
+					updateDirection(c, r, i - c, j - r,new_state); 
+					// This definitely does something. not even sure how though. Board doesn't update without it
 				}
 			}
 		}
