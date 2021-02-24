@@ -130,6 +130,13 @@ public class Game {
 
 	}*/
 
+	// isn't this more like an update to state than it is just getting state lol
+	// this is our transition function, it seems like. Given 1 state, 1 action, return the new state
+	// oh...
+
+	// shouldn't most of the logic be handled in actions then? there's so much logic handling for a trans.
+	// function that's just supposed to update states.
+
 	public static State get_result(State s, String a) {
 		State new_state = new State(s.getBoard(),s.getActivePlayer());
 		int c = Integer.parseInt(String.valueOf(a.charAt(0)));
@@ -139,25 +146,31 @@ public class Game {
 		// TODO: explain logic here?
 		for (int i = Math.max(c - 1, 0); i < Math.min(c + 2, s.getBoard().length); i++) {
 			for (int j = Math.max(r - 1, 0); j < Math.min(r + 2, s.getBoard().length); j++) {
-				if (s.getBoard()[i][j]*s.getActivePlayer() < 0) { // TODO: we're doing matrix multiplication?
+				if (s.getBoard()[i][j]*s.getActivePlayer() < 0) { 
+				// TODO: we're doing matrix multiplication?
 				// TODO: Explain interactions of board above? It's not like board values are 
 				// initialized to 0, or -inf, so this flags for actually 3 conditions. one is where
 				// white player interacts with dark piece (-1), and dark player interacts with white piece (1).
 				// OH nvm I get it... I think. This should ONLY flag when player interacts with piece they're
 				// not supposed to. Just double check then, that WPlayer is 1 and DPlayer is -1 then!!
 
-					// TODO: This returns a bool... but it isn't stored anywhere. is this intentional?
-					updateDirection(c, r, i - c, j - r,new_state); //wtf lmao
+					// TODO: This DEFINITELY influences board state, but I'm curious as to what happens because
+					// it also returns a true/false bool value... Could we just not utilize a seperate function?
+					// updateDirection is literally only called here...
+					updateDirection(c, r, i - c, j - r,new_state); //TEST
+					// nope, this definitely does something. not even sure how though
 				}
 			}
 		}
-		new_state.board[c][r] = new_state.activePlayer; // TODO: Don't understand this
+		new_state.board[c][r] = new_state.activePlayer; // TODO: Don't understand this.
+		// ^does this potentially update value at that given matrix element?
+
 		new_state.activePlayer = new_state.getActivePlayer()*-1; // inverting activePlayer here...
 		return new_state;
 
 	}
 
-
+	// potentially misleading? I don't see this changing much here
 	private static boolean updateDirection(int c,int r, int x, int y,State s) {
 		if (c + x >= s.getBoard().length || r + y >= s.getBoard().length || c + x < 0 || r + y < 0) {
 			return false;
@@ -169,7 +182,8 @@ public class Game {
 			s.board[x + c][y + r] = s.getActivePlayer();
 			return true;
 		}
-		if(updateDirection(c + x, r + y, x, y,s)){ // TODO: What?? So I check directions.... to do...?
+		if(updateDirection(c + x, r + y, x, y,s)){ 
+			// TODO: Feels recurisve. Still not sure what this does.
 			s.board[x + c][y + r] = s.getActivePlayer();
 			return true;
 		}

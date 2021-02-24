@@ -30,6 +30,10 @@ public class AlphaBeta implements Player {
     private static double max_value(State s, double a,double b){
         //System.out.println("+++++++++++++++++++++");
         //printBoard(s.board);
+
+        // TODO: Should game terminality not be in the overarching function?
+        // we've also noted a few bugs where game didn't recognize terminality.
+        // could this also be why our evals goes on for WAY longer than they should?
         if(Game.terminal_test(s)){
             return Game.utility(s);
         }
@@ -38,7 +42,7 @@ public class AlphaBeta implements Player {
             s.activePlayer *=-1;
             return min_value(s,a,b);
         }
-        double v = Double.NEGATIVE_INFINITY; //TODO: WAIT, isn't it supposed to be POSITIVE INFINITY?
+        double v = Double.NEGATIVE_INFINITY; 
 
         for(int i=0; i<alist.getActions().size();i++){
             //System.out.println(alist.actions+"action selected");
