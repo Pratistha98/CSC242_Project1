@@ -5,6 +5,7 @@ public class HeuristicAB implements Player {
     }
 
     public String get_action(State s) {
+        System.out.println("I work in get_actions"); // TESTER
         return heuristicAB(s);
     }
 

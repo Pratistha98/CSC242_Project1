@@ -43,6 +43,7 @@ public class Game {
 						System.out.println("Dark's Turn");
 					} else {
 						System.out.println("Light's Turn");
+						System.out.println("I work in play_game"); // TESTER
 					}
 				} else {
 					System.out.println("Chosen action: " + action + " is not a valid move");

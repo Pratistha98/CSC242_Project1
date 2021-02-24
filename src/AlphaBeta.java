@@ -7,6 +7,7 @@ public class AlphaBeta implements Player {
     }
 
     private static String minimax_ab(State s){
+        System.out.println("Minimax_ab works"); // TESTER
         Actions alist = new Actions(s);
         if(Game.terminal_test(s)){ //terminal state checker
             // TODO: should also account for 2nd player's available actions
@@ -28,6 +29,7 @@ public class AlphaBeta implements Player {
     }
 
     private static double max_value(State s, double a,double b){
+        System.out.println("max_value works"); // TESTER
         //System.out.println("+++++++++++++++++++++");
         //printBoard(s.board);
 
@@ -56,6 +58,8 @@ public class AlphaBeta implements Player {
         return v;
     }
     private static double min_value(State s, double a, double b){
+        System.out.print("min_value works \n"); // TESTER
+        
         if(Game.terminal_test(s)){
             return Game.utility(s);
         }
