@@ -124,7 +124,7 @@ public static void board_size (){
 				   State init_s = Game.generate_init_state(size);
 				   Player human = new Human();
 				   Player ab = new AlphaBeta();
-				   if (active_player.equals("H")){
+				   if (active_player.equals("H")){ // .equals("H")?
 					   quitState = Game.play_game(human,ab,init_s, quitState); // TESTER
 				   }
 				   else{
@@ -135,6 +135,7 @@ public static void board_size (){
 				System.out.println("I am H-MiniMax with depth cut off and Alpha Beta Pruning");
 				} 
 				else if (agent == 0){
+					quitState = false;
 					System.exit(0);
 				}
 			 	else{

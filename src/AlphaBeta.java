@@ -38,7 +38,7 @@ public class AlphaBeta implements Player {
             s.activePlayer *=-1;
             return min_value(s,a,b);
         }
-        double v = Double.NEGATIVE_INFINITY;
+        double v = Double.NEGATIVE_INFINITY; //TODO: WAIT, isn't it supposed to be POSITIVE INFINITY?
 
         for(int i=0; i<alist.getActions().size();i++){
             //System.out.println(alist.actions+"action selected");

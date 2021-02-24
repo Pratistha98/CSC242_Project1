@@ -20,6 +20,8 @@ public class Actions {
        //System.out.println(this.actions);
 
     }
+
+    // I don't understand this code, but yes.
     private void addAdjacentActions(int r,int c) {
         for (int i = Math.max(r - 1, 0); i < Math.min(r + 2, this.state.getBoard().length); i++) {
             for (int j = Math.max(c - 1, 0); j < Math.min(c + 2, this.state.getBoard().length); j++) {
@@ -42,6 +44,7 @@ public class Actions {
         }
     }
 
+    // TODO: description here as to what checkDirection does?
     private boolean checkDirection(int r,int c, int x, int y) {
         //System.out.println("r "+r+" c "+c);
 
@@ -62,6 +65,7 @@ public class Actions {
         }
         return checkDirection(r + y, c + x, x, y);
     }
+    
     public ArrayList<String> getActions(){
         return actions;
     }
